@@ -1,0 +1,31 @@
+<header>
+  <div class="header__container">
+    <a class="header__logo">
+      <span>ShopStore</span>
+    </a>
+    <nav class="header__nav">
+      <a
+        *ngFor="let item of navItems"
+        class="header__nav-link"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+    <div class="header__search">
+      <form class="search-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>How are you doing?</mat-label>
+          <input type="search" matInput placeholder="" value="">
+        </mat-form-field>
+      </form>
+    </div>
+
+    <div class="header__icons">
+      <button matIconButton aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>cart</mat-icon>
+      </button>
+      <button matIconButton aria-label="Example icon button with a vertical three dot icon">
+      </button>
+    </div>
+  </div>
+</header>
