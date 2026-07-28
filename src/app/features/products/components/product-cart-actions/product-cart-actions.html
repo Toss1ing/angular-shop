@@ -1,0 +1,41 @@
+<div
+  class="product-cart-actions"
+  [class.product-cart-actions--page]="variant === 'page'"
+  (click)="$event.stopPropagation()"
+>
+  <button
+    *ngIf="cartCount === 0"
+    mat-flat-button
+    color="primary"
+    class="product-cart-actions__add"
+    type="button"
+    [disabled]="product.stock === 0 || isLoading"
+    (click)="addToCart($event)"
+  >
+    Add to cart
+  </button>
+
+  <div *ngIf="cartCount > 0" class="product-cart-actions__quantity">
+    <button
+      mat-icon-button
+      type="button"
+      [disabled]="isLoading"
+      (click)="decrement($event)"
+    >
+      <mat-icon>remove</mat-icon>
+    </button>
+
+    <span class="product-cart-actions__count">{{ cartCount }}</span>
+
+    <button
+      mat-icon-button
+      type="button"
+      [disabled]="isLoading || !canIncrement"
+      (click)="increment($event)"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <p class="product-cart-actions__error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

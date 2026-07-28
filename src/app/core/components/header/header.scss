@@ -1,9 +1,191 @@
-.spacer {
-  flex: 1 1 auto;
+.header {
+  padding: 8px;
+  background: #f5f6f8;
 }
 
-.header-container {
-  margin-left: 50px;
-  margin-right: 50px;
+.header__container {
+  height: 78px;
+  padding: 0 38px;
+
   display: flex;
+  align-items: center;
+  gap: 38px;
+
+  background: #ffffff;
+  border: 1px solid #eef0f4;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(17, 24, 39, 0.04);
+}
+
+.header__logo {
+  flex-shrink: 0;
+
+  color: #111827;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  height: 100%;
+}
+
+.header__nav-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  color: #111827;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.header__nav-link:hover {
+  color: #000000;
+}
+
+.header__nav-link--active {
+  font-weight: 700;
+}
+
+.header__nav-link--active::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: 4px;
+  border-radius: 999px 999px 0 0;
+  background: #111827;
+}
+
+.header__search {
+  margin-left: auto;
+  width: 430px;
+}
+
+.header__search-field {
+  width: 100%;
+}
+
+.header__search-field--active {
+  color: black !important;
+}
+
+.header__icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #111827;
+}
+
+.header__account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__user-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f5f6f8;
+  border: 1px solid #eef0f4;
+  color: #111827;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.header__user-email {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.header__logout,
+.header__sign-in {
+  height: 36px;
+}
+
+/* Angular Material form-field customization */
+:host ::ng-deep .header__search-field .mat-mdc-text-field-wrapper {
+  height: 44px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+:host ::ng-deep .header__search-field .mat-mdc-form-field-flex {
+  height: 44px;
+  align-items: center;
+}
+
+:host ::ng-deep .header__search-field .mat-mdc-form-field-infix {
+  min-height: 44px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+:host ::ng-deep .header__search-field .mdc-notched-outline__leading,
+:host ::ng-deep .header__search-field .mdc-notched-outline__notch,
+:host ::ng-deep .header__search-field .mdc-notched-outline__trailing {
+  border-color: #e5e7eb;
+}
+
+:host ::ng-deep .header__search-field input {
+  font-size: 14px;
+}
+
+:host ::ng-deep .header__search-field .mat-mdc-form-field-icon-suffix {
+  color: #4b5563;
+}
+
+@media (max-width: 1000px) {
+  .header__container {
+    gap: 24px;
+    padding: 0 24px;
+  }
+
+  .header__nav {
+    gap: 20px;
+  }
+
+  .header__search {
+    width: 320px;
+  }
+}
+
+@media (max-width: 760px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__search {
+    width: 100%;
+  }
 }

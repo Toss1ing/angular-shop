@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Header } from './components/header/header';
-import { Footer } from './components/footer/footer';
 import { MaterialModule } from '../shared/material/material-module';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @NgModule({
-  declarations: [Header, Footer],
-  imports: [CommonModule, MaterialModule],
-  exports: [Footer, Header, MaterialModule],
+  declarations: [Header],
+  imports: [CommonModule, MaterialModule, RouterLinkActive, RouterLink],
+  exports: [Header, MaterialModule],
 })
 export class CoreModule {}

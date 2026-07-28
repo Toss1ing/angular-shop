@@ -1,1 +1,22 @@
-<p>plp-page works!</p>
+<ng-container *ngIf="products$ | async as products">
+  <div class="plp__page">
+    <aside>
+      <app-filters
+        [products]="products"
+        (apply)="onApplyFilters($event)"
+      />
+    </aside>
+
+    <main class="products__grid">
+      <app-product-card
+        *ngFor="
+        let product of products
+          | productFilterPipe
+            : filters
+      "
+        [product]="product"
+        (productDeleted)="onProductDeleted()"
+      />
+    </main>
+  </div>
+</ng-container>

@@ -1,0 +1,25 @@
+.plp__page {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  padding: 8px 8px 32px;
+  background: #f5f6f8;
+}
+
+.products__grid {
+  flex: 1;
+  margin-right: 20px;
+  margin-left: 20px;
+
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
+  justify-content: start;
+  gap: 24px;
+}
+
+.products__grid app-product-card {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 100%;
+}

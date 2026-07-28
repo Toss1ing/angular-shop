@@ -1,0 +1,14 @@
+export interface User {
+  id: string;
+  email: string;
+}
+
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export interface SingUpCredentials {
+  email: string;
+  password: string;
+}

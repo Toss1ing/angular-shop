@@ -1,1 +1,152 @@
-<p>filters works!</p>
+<aside class="facets">
+  <div class="facets__header">
+    <h2>Filters</h2>
+    <button mat-button type="button" class="facets__clear-button"
+            (click)="clearAll()"
+    >
+      Clear all
+    </button>
+  </div>
+  <section class="facet-section">
+    <div
+      class="selected-filters"
+      *ngIf="hasSelectedFilters">
+      <ng-container *ngFor="let price of filterState.prices">
+        <button
+          class="selected-filter"
+          *ngIf="price.selected"
+          (click)="togglePrice(price)">
+          {{ price.label }}
+          <mat-icon>close</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *ngFor="let stock of filterState.stocks">
+        <button
+          class="selected-filter"
+          *ngIf="stock.selected"
+          (click)="toggleStock(stock)">
+          {{ stock.label }}
+          <mat-icon>close</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *ngFor="let rating of filterState.ratings">
+        <button
+          class="selected-filter"
+          *ngIf="rating.selected"
+          (click)="toggleRating(rating)">
+          {{ rating.label }}
+          <mat-icon>close</mat-icon>
+        </button>
+      </ng-container>
+    </div>
+    <section class="facet-section">
+      <button
+        class="facet-section__header"
+        (click)="priceOpened = !priceOpened">
+      <span>
+        Price
+        <small *ngIf="selectedPricesCount">
+          ({{ selectedPricesCount }})
+        </small>
+      </span>
+        <mat-icon
+          [class.facet-section__icon--collapsed]="!priceOpened">
+          keyboard_arrow_down
+        </mat-icon>
+      </button>
+      <div
+        class="facet-section__content"
+        [class.closed]="!priceOpened">
+        <mat-checkbox
+          *ngFor="let price of filterState.prices"
+          class="facet-checkbox"
+          [checked]="price.selected"
+          (change)="togglePrice(price)">
+        <span class="facet-checkbox__label">
+          {{ price.label }}
+        </span>
+        <span class="facet-checkbox__count">
+          ({{ price.count }})
+        </span>
+        </mat-checkbox>
+      </div>
+    </section>
+    <section class="facet-section">
+      <button
+        class="facet-section__header"
+        (click)="stockOpened = !stockOpened">
+      <span>
+        Stock
+        <small *ngIf="selectedStocksCount">
+          ({{ selectedStocksCount }})
+        </small>
+      </span>
+        <mat-icon
+          [class.facet-section__icon--collapsed]="!stockOpened">
+          keyboard_arrow_down
+        </mat-icon>
+      </button>
+      <div
+        class="facet-section__content"
+        [class.closed]="!stockOpened">
+        <mat-checkbox
+          *ngFor="let stock of filterState.stocks"
+          class="facet-checkbox"
+          [checked]="stock.selected"
+          (change)="toggleStock(stock)">
+        <span class="facet-checkbox__label">
+          {{ stock.label }}
+        </span>
+        <span class="facet-checkbox__count">
+          ({{ stock.count }})
+        </span>
+        </mat-checkbox>
+      </div>
+    </section>
+    <section class="facet-section">
+      <button
+        class="facet-section__header"
+        (click)="ratingOpened = !ratingOpened">
+      <span>
+        Rating
+        <small *ngIf="selectedRatingsCount">
+          ({{ selectedRatingsCount }})
+        </small>
+      </span>
+        <mat-icon
+          [class.facet-section__icon--collapsed]="!ratingOpened">
+          keyboard_arrow_down
+        </mat-icon>
+      </button>
+      <div
+        class="facet-section__content"
+        [class.closed]="!ratingOpened">
+        <mat-checkbox
+          *ngFor="let rating of filterState.ratings"
+          class="facet-checkbox"
+          [checked]="rating.selected"
+          (change)="toggleRating(rating)">
+        <span class="facet-checkbox__label">
+          {{ rating.label }}
+        </span>
+        <span class="facet-checkbox__count">
+          ({{ rating.count }})
+        </span>
+        </mat-checkbox>
+      </div>
+    </section>
+    <div class="filters-footer">
+
+      <button
+        mat-flat-button
+        class="show-products-button"
+        [disabled]="matchedProducts===0"
+        (click)="applyFilters()">
+
+        Show products ({{ matchedProducts }})
+
+      </button>
+
+    </div>
+  </section>
+</aside>

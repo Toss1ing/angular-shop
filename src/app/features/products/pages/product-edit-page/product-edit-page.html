@@ -1,0 +1,104 @@
+<section class="product-edit-page">
+  <div class="product-edit-page__container">
+    <button mat-button type="button" class="product-edit-page__back" (click)="onPlpPage()">
+      <mat-icon>arrow_back</mat-icon>
+      Back to product
+    </button>
+
+    <p class="product-edit-page__loading" *ngIf="isLoading">Loading product...</p>
+    <p class="product-edit-page__error" *ngIf="!isLoading && errorMessage && productForm.pristine">
+      {{ errorMessage }}
+    </p>
+
+    <div class="product-edit-page__card" *ngIf="!isLoading && !errorMessage">
+      <h1 *ngIf="isEdit">Edit product</h1>
+      <h1 *ngIf="!isEdit">Create product</h1>
+      <p *ngIf="isEdit" class="product-edit-page__subtitle">Update product details and save changes</p>
+      <p  *ngIf="!isEdit" class="product-edit-page__subtitle">Create new product</p>
+
+
+      <form class="product-edit-page__form" [formGroup]="productForm" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline" class="product-edit-page__field">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" />
+          <mat-error *ngIf="productForm.get('title')?.hasError('required')">
+            Title is required
+          </mat-error>
+          <mat-error *ngIf="productForm.get('title')?.hasError('minlength')">
+            Title must be more than 3 symbols
+          </mat-error>
+        </mat-form-field>
+
+        <div class="product-edit-page__row">
+          <mat-form-field appearance="outline" class="product-edit-page__field">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" formControlName="price" />
+            <mat-error *ngIf="productForm.get('price')?.hasError('required')">Price is required</mat-error>
+            <mat-error *ngIf="productForm.get('price')?.hasError('min')">
+              must be greater than 1
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="product-edit-page__field">
+            <mat-label>Stock</mat-label>
+            <input matInput type="number" formControlName="stock" />
+            <mat-error *ngIf="productForm.get('stock')?.hasError('required')">Stock is required</mat-error>
+            <mat-error *ngIf="productForm.get('stock')?.hasError('min')">
+              Stock must be greater than 0
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="product-edit-page__field">
+          <mat-label>Image URL</mat-label>
+          <input matInput formControlName="image" />
+          <mat-error *ngIf="productForm.get('image')?.hasError('required')">Image URL is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="product-edit-page__field">
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="5" formControlName="description"></textarea>
+          <mat-error *ngIf="productForm.get('description')?.hasError('required')">
+            Description is required
+          </mat-error>
+          <mat-error *ngIf="productForm.get('description')?.hasError('minlength')">
+            Description must be more than 30 symbols
+          </mat-error>
+        </mat-form-field>
+
+        <div class="product-edit-page__row">
+          <mat-form-field appearance="outline" class="product-edit-page__field">
+            <mat-label>Rating</mat-label>
+            <input matInput type="number" formControlName="ratingRate" />
+            <mat-error *ngIf="productForm.get('ratingRate')?.hasError('min')">
+              Rating rate must be greater than 0
+            </mat-error>
+            <mat-error *ngIf="productForm.get('ratingRate')?.hasError('max')">
+              Rating rate must be less than 5
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="product-edit-page__field">
+            <mat-label>Reviews count</mat-label>
+            <input matInput type="number" formControlName="ratingCount" />
+            <mat-error *ngIf="productForm.get('ratingCount')?.hasError('min')">
+              Reviews count must be greater than 0
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <p class="product-edit-page__error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+        <div class="product-edit-page__actions">
+          <button mat-stroked-button type="button" (click)="onPlpPage()">Cancel</button>
+          <button *ngIf="isEdit" mat-flat-button type="submit" [disabled]="isSaving">
+            {{ isSaving ? 'Saving...' : 'Save changes' }}
+          </button>
+          <button *ngIf="!isEdit" mat-flat-button type="submit" [disabled]="isSaving">
+            {{ isSaving ? 'Creating product...' : 'Create product' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
