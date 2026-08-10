@@ -50,7 +50,10 @@ export class ProductCard implements OnInit {
   public deleteProduct(event: Event): void {
     event.stopPropagation();
 
+    this.refreshAuthState();
+
     if (!this.isAuthenticated || this.isDeleting) {
+      this.actionMessage = 'Could not delete product';
       return;
     }
 
@@ -65,8 +68,6 @@ export class ProductCard implements OnInit {
       },
       error: () => {
         this.isDeleting = false;
-        this.actionMessage = 'Could not delete product';
-        this.changeDetectorRef.detectChanges();
       }
     });
   }

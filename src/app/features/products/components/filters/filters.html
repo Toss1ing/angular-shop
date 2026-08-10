@@ -15,7 +15,7 @@
         <button
           class="selected-filter"
           *ngIf="price.selected"
-          (click)="togglePrice(price)">
+          (click)="toggleFacet(price)">
           {{ price.label }}
           <mat-icon>close</mat-icon>
         </button>
@@ -24,7 +24,7 @@
         <button
           class="selected-filter"
           *ngIf="stock.selected"
-          (click)="toggleStock(stock)">
+          (click)="toggleFacet(stock)">
           {{ stock.label }}
           <mat-icon>close</mat-icon>
         </button>
@@ -33,7 +33,7 @@
         <button
           class="selected-filter"
           *ngIf="rating.selected"
-          (click)="toggleRating(rating)">
+          (click)="toggleFacet(rating)">
           {{ rating.label }}
           <mat-icon>close</mat-icon>
         </button>
@@ -61,7 +61,7 @@
           *ngFor="let price of filterState.prices"
           class="facet-checkbox"
           [checked]="price.selected"
-          (change)="togglePrice(price)">
+          (change)="toggleFacet(price)">
         <span class="facet-checkbox__label">
           {{ price.label }}
         </span>
@@ -93,7 +93,7 @@
           *ngFor="let stock of filterState.stocks"
           class="facet-checkbox"
           [checked]="stock.selected"
-          (change)="toggleStock(stock)">
+          (change)="toggleFacet(stock)">
         <span class="facet-checkbox__label">
           {{ stock.label }}
         </span>
@@ -125,7 +125,7 @@
           *ngFor="let rating of filterState.ratings"
           class="facet-checkbox"
           [checked]="rating.selected"
-          (change)="toggleRating(rating)">
+          (change)="toggleFacet(rating)">
         <span class="facet-checkbox__label">
           {{ rating.label }}
         </span>

@@ -1,11 +1,19 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { Product } from '../../models/product';
 import {
   FacetOption,
   FacetOptionPriceLabel,
   FacetOptionRatingLabel,
   FacetOptionStockLabel,
-  FilterState
+  FilterState,
 } from '../../models/facetOption';
 import { ProductFilterService } from '../../service/fiter.service';
 
@@ -15,7 +23,7 @@ import { ProductFilterService } from '../../service/fiter.service';
   templateUrl: './filters.html',
   styleUrl: './filters.scss',
 })
-export class Filters implements OnChanges {
+export class Filters implements OnChanges, OnInit {
   @Input({ required: true })
   products!: Product[];
 
@@ -41,22 +49,17 @@ export class Filters implements OnChanges {
       this.createPriceFacets();
       this.createStockFacets();
       this.createRatingFacets();
-      this.recalculateFacetsCounts();
+
+      this.calculateFacetCounts();
     }
   }
 
-  public togglePrice(price: FacetOption): void {
-    price.selected = !price.selected;
-    this.calculateMatchedProducts();
+  ngOnInit() {
+    this.matchedProducts = this.products.length;
   }
 
-  public toggleStock(stock: FacetOption): void {
-    stock.selected = !stock.selected;
-    this.calculateMatchedProducts();
-  }
-
-  public toggleRating(rating: FacetOption): void {
-    rating.selected = !rating.selected;
+  public toggleFacet(facet: FacetOption): void {
+    facet.selected = !facet.selected;
     this.calculateMatchedProducts();
   }
 
@@ -64,8 +67,10 @@ export class Filters implements OnChanges {
     this.filterState.prices.forEach((x) => (x.selected = false));
     this.filterState.stocks.forEach((x) => (x.selected = false));
     this.filterState.ratings.forEach((x) => (x.selected = false));
-    this.recalculateFacetsCounts();
 
+    this.calculateFacetCounts();
+
+    this.calculateMatchedProducts();
     this.applyFilters();
   }
 
@@ -141,7 +146,6 @@ export class Filters implements OnChanges {
         selected: false,
       },
     ];
-
   }
 
   private createRatingFacets(): void {
@@ -174,33 +178,20 @@ export class Filters implements OnChanges {
     ];
   }
 
-  private calculateRatingCount() : void {
-    this.filterState.ratings =
-      this.productFilterService.calculateRatingCounts(
-        this.products,
-        this.filterState.ratings
-      );
-  }
+  private calculateFacetCounts(): void {
+    this.filterState.prices = this.productFilterService.calculatePriceCounts(
+      this.products,
+      this.filterState.prices,
+    );
 
-  private calculateStockCount() : void {
-    this.filterState.stocks =
-      this.productFilterService.calculateStockCounts(
-        this.products,
-        this.filterState.stocks
-      );
-  }
+    this.filterState.ratings = this.productFilterService.calculateRatingCounts(
+      this.products,
+      this.filterState.ratings,
+    );
 
-  private calculatePriceCount(): void {
-    this.filterState.prices =
-      this.productFilterService.calculatePriceCounts(
-        this.products,
-        this.filterState.prices
-      );
-  }
-
-  private recalculateFacetsCounts(): void {
-    this.calculateRatingCount();
-    this.calculateStockCount();
-    this.calculatePriceCount();
+    this.filterState.stocks = this.productFilterService.calculateStockCounts(
+      this.products,
+      this.filterState.stocks,
+    );
   }
 }

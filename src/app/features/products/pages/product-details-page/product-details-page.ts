@@ -56,20 +56,6 @@ export class ProductDetailsPage implements OnInit {
     return this.product?.rating?.rate ?? 0;
   }
 
-  public getStockLabel(): string {
-    const productStock: number = this.product?.stock ?? 0
-
-    if(productStock > 10) {
-      return 'In stock';
-    }
-    if(productStock > 1 && productStock <= 10) {
-      return 'Almost sold out';
-    }
-    else {
-      return 'Out of stock';
-    }
-  }
-
   private loadProduct(productId: string): void {
     this.productService.getProductById(
       productId).subscribe({
@@ -81,6 +67,7 @@ export class ProductDetailsPage implements OnInit {
       error: () => {
         this.errorMessage = 'Product not found';
         this.isLoading = false;
+        this.changeDetectorRef.detectChanges();
       }
     });
   }

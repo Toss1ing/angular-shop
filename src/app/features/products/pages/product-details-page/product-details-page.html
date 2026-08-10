@@ -5,92 +5,95 @@
       Back to products
     </button>
 
-    <p class="product-details__loading" *ngIf="isLoading">Loading product...</p>
-    <p class="product-details__error" *ngIf="!isLoading && errorMessage">{{ errorMessage }}</p>
+    <p class="product-details__loading" *ngIf="isLoading; else notLoading">Loading product...</p>
 
-    <div class="product-details__content" *ngIf="!isLoading && product">
-      <article class="product-details__hero">
-        <div class="product-details__gallery">
-          <img [src]="product.image" [alt]="product.title" />
-        </div>
+    <ng-template #notLoading>
+      <p class="product-details__error" *ngIf="errorMessage; else productContent">{{ errorMessage }}</p>
+    </ng-template>
 
-        <div class="product-details__info">
-          <div class="product-details__meta">
+    <ng-template #productContent>
+      <div class="product-details__content" *ngIf="!isLoading && product">
+        <article class="product-details__hero">
+          <div class="product-details__gallery">
+            <img [src]="product.image" [alt]="product.title" />
+          </div>
+
+          <div class="product-details__info">
+            <div class="product-details__meta">
             <span
               class="product-details__badge"
-              [class.product-details__badge--out]="product.stock <= 10"
-            >
-              {{ getStockLabel() }}
+              [stockCount]="product.stock">
             </span>
-          </div>
-
-          <h1 class="product-details__title">{{ product.title }}</h1>
-
-          <div class="product-details__rating">
-            <div class="product-details__review-stars">
-              <mat-icon
-                *ngFor="let star of getStars(displayRating)"
-                [class.product-details__star--filled]="star <= displayRating"
-              >
-                {{ star <= displayRating ? 'star' : 'star_border' }}
-              </mat-icon>
             </div>
-            <span class="product-details__rating-count">
+
+            <h1 class="product-details__title">{{ product.title }}</h1>
+
+            <div class="product-details__rating">
+              <div class="product-details__review-stars">
+                <mat-icon
+                  *ngFor="let star of getStars(displayRating)"
+                  [class.product-details__star--filled]="star <= displayRating"
+                >
+                  {{ star <= displayRating ? 'star' : 'star_border' }}
+                </mat-icon>
+              </div>
+              <span class="product-details__rating-count">
               {{ displayRating | number: '1.1-1' }} · {{ reviewsCount }} reviews
             </span>
-          </div>
-
-          <div class="product-details__purchase">
-            <div class="product-details__price-block">
-              <p class="product-details__price">{{ product.price | currency: 'EUR' }}</p>
-              <p class="product-details__stock" *ngIf="product.stock > 0">
-                {{ product.stock }} available
-              </p>
             </div>
 
-            <app-product-cart-actions [product]="product" variant="page" />
-          </div>
-
-          <section class="product-details__about">
-            <h2>About this product</h2>
-            <p>{{ product.description }}</p>
-          </section>
-        </div>
-      </article>
-
-      <section class="product-details__reviews-panel">
-        <div class="product-details__reviews-header">
-          <h2>Customer reviews</h2>
-          <span class="product-details__reviews-count">{{ reviews.length }} written</span>
-        </div>
-
-        <p class="product-details__reviews-empty" *ngIf="!reviews.length">
-          No reviews yet for this product.
-        </p>
-
-        <div class="product-details__reviews-list" *ngIf="reviews.length">
-          <article class="product-details__review" *ngFor="let review of reviews">
-            <div class="product-details__review-avatar">
-              {{ review.name.charAt(0) }}
-            </div>
-
-            <div class="product-details__review-body">
-              <div class="product-details__review-header">
-                <strong>{{ review.name }}</strong>
-                <div class="product-details__review-stars">
-                  <mat-icon
-                    *ngFor="let star of getStars(review.rate)"
-                    [class.product-details__star--filled]="star <= review.rate"
-                  >
-                    {{ star <= review.rate ? 'star' : 'star_border' }}
-                  </mat-icon>
-                </div>
+            <div class="product-details__purchase">
+              <div class="product-details__price-block">
+                <p class="product-details__price">{{ product.price | currency: 'EUR' }}</p>
+                <p class="product-details__stock" *ngIf="product.stock > 0">
+                  {{ product.stock }} available
+                </p>
               </div>
-              <p class="product-details__review-text">{{ review.text }}</p>
+
+              <app-product-cart-actions [product]="product" variant="page" />
             </div>
-          </article>
-        </div>
-      </section>
-    </div>
+
+            <section class="product-details__about">
+              <h2>About this product</h2>
+              <p>{{ product.description }}</p>
+            </section>
+          </div>
+        </article>
+
+        <section class="product-details__reviews-panel">
+          <div class="product-details__reviews-header">
+            <h2>Customer reviews</h2>
+            <span class="product-details__reviews-count">{{ reviews.length }} written</span>
+          </div>
+
+          <p class="product-details__reviews-empty" *ngIf="!reviews.length">
+            No reviews yet for this product.
+          </p>
+
+          <div class="product-details__reviews-list" *ngIf="reviews.length">
+            <article class="product-details__review" *ngFor="let review of reviews">
+              <div class="product-details__review-avatar">
+                {{ review.name.charAt(0) }}
+              </div>
+
+              <div class="product-details__review-body">
+                <div class="product-details__review-header">
+                  <strong>{{ review.name }}</strong>
+                  <div class="product-details__review-stars">
+                    <mat-icon
+                      *ngFor="let star of getStars(review.rate)"
+                      [class.product-details__star--filled]="star <= review.rate"
+                    >
+                      {{ star <= review.rate ? 'star' : 'star_border' }}
+                    </mat-icon>
+                  </div>
+                </div>
+                <p class="product-details__review-text">{{ review.text }}</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </ng-template>
   </div>
 </section>

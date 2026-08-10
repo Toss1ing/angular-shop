@@ -5,79 +5,59 @@ import {
   FacetOptionPriceLabel,
   FacetOptionRatingLabel,
   FacetOptionStockLabel,
-  FilterState
+  FilterState,
 } from '../models/facetOption';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductFilterService {
 
   filter(products: Product[], filterState: FilterState): Product[] {
     return products.filter(
       (product) =>
-        this.matchesPrice(product, filterState.prices) &&
-        this.matchesRating(product, filterState.ratings) &&
-        this.matchesStock(product, filterState.stocks),
+        this.matchesSelectedOptions(product, filterState.prices, (product, option) =>
+          this.matchesPriceOption(product, option),
+        ) &&
+        this.matchesSelectedOptions(product, filterState.ratings, (product, option) =>
+          this.matchesRatingOption(product, option),
+        ) &&
+        this.matchesSelectedOptions(product, filterState.stocks, (product, option) =>
+          this.matchesStockOption(product, option),
+        ),
     );
   }
 
-  calculatePriceCounts(
-    products: Product[],
-    options: FacetOption[],
-  ): FacetOption[] {
-
-    return options.map(option => ({
-      ...option,
-      count: products.filter(product =>
-        this.matchesPriceOption(product, option)
-      ).length
-    }));
-  }
-
-  calculateStockCounts(
-    products: Product[],
-    options: FacetOption[],
-  ): FacetOption[] {
-
-    return options.map(option => ({
-      ...option,
-      count: products.filter(product =>
-        this.matchesStockOption(product, option)
-      ).length
-    }));
-  }
-
-  calculateRatingCounts(
-    products: Product[],
-    options: FacetOption[],
-  ): FacetOption[] {
-
-    return options.map(option => ({
-      ...option,
-      count: products.filter(product =>
-        this.matchesRatingOption(product, option)
-      ).length
-    }));
-  }
-
-  private matchesPrice(product: Product, options: FacetOption[]): boolean {
-    const selected = options.filter(option => option.selected);
-
-    if (!selected.length) {
-      return true;
-    }
-
-    return selected.some(option =>
-      this.matchesPriceOption(product, option)
+  calculatePriceCounts(products: Product[], options: FacetOption[]): FacetOption[] {
+    return this.calculateCounts(products, options, (product, option) =>
+      this.matchesPriceOption(product, option),
     );
   }
 
-  private matchesPriceOption(
-    product: Product,
-    option: FacetOption
-  ): boolean {
+  calculateStockCounts(products: Product[], options: FacetOption[]): FacetOption[] {
+    return this.calculateCounts(products, options, (product, option) =>
+      this.matchesStockOption(product, option),
+    );
+  }
 
+  calculateRatingCounts(products: Product[], options: FacetOption[]): FacetOption[] {
+    return this.calculateCounts(products, options, (product, option) =>
+      this.matchesRatingOption(product, option),
+    );
+  }
+
+  private calculateCounts(
+    products: Product[],
+    options: FacetOption[],
+    matcher: (product: Product, option: FacetOption) => boolean,
+  ): FacetOption[] {
+    return options.map((option) => ({
+      ...option,
+      count: products.filter((product) => matcher(product, option)).length,
+    }));
+  }
+
+  private matchesPriceOption(product: Product, option: FacetOption): boolean {
     const price = Number(product.price);
 
     switch (option.label) {
@@ -98,23 +78,7 @@ export class ProductFilterService {
     }
   }
 
-  private matchesRating(product: Product, options: FacetOption[]): boolean {
-    const selected = options.filter(option => option.selected);
-
-    if (!selected.length) {
-      return true;
-    }
-
-    return selected.some(option =>
-      this.matchesRatingOption(product, option)
-    );
-  }
-
-  private matchesRatingOption(
-    product: Product,
-    option: FacetOption
-  ): boolean {
-
+  private matchesRatingOption(product: Product, option: FacetOption): boolean {
     const rating = Number(product.rating?.rate ?? 0);
 
     switch (option.label) {
@@ -138,23 +102,7 @@ export class ProductFilterService {
     }
   }
 
-  private matchesStock(product: Product, options: FacetOption[]): boolean {
-    const selected = options.filter(option => option.selected);
-
-    if (!selected.length) {
-      return true;
-    }
-
-    return selected.some(option =>
-      this.matchesStockOption(product, option)
-    );
-  }
-
-  private matchesStockOption(
-    product: Product,
-    option: FacetOption
-  ): boolean {
-
+  private matchesStockOption(product: Product, option: FacetOption): boolean {
     switch (option.label) {
       case FacetOptionStockLabel.IN_STOCK:
         return product.stock > 0;
@@ -165,5 +113,19 @@ export class ProductFilterService {
       default:
         return false;
     }
+  }
+
+  private matchesSelectedOptions(
+    product: Product,
+    options: FacetOption[],
+    matcher: (product: Product, option: FacetOption) => boolean,
+  ): boolean {
+    const selectedOptions = options.filter((option) => option.selected);
+
+    if (!selectedOptions.length) {
+      return true;
+    }
+
+    return selectedOptions.some((option) => matcher(product, option));
   }
 }

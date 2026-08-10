@@ -1,25 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../auth/service/auth.service';
 import { Product } from '../../products/models/product';
-import { environment } from '../../../enviroment/environment.dev';
 import { Cart, CartItem } from '../models/cart';
 import { map, Observable, of, switchMap, throwError } from 'rxjs';
+import { Exception } from '../../products/models/exception';
+import { CartDataService } from './cart-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private API_URL = 'cart';
 
   constructor(
-    private http: HttpClient,
     private authService: AuthService,
+    private cartDataService: CartDataService,
   ) {}
-
-  addProduct(product: Product): Observable<number> {
-    return this.changeProductCount(product, 1);
-  }
 
   incrementProduct(product: Product): Observable<number> {
     return this.changeProductCount(product, 1);
@@ -41,7 +36,7 @@ export class CartService {
     const user = this.authService.getCurrentUser();
 
     if (!user) {
-      return throwError(() => new Error('NOT_AUTH'));
+      return throwError(() => new Error(Exception.NOT_AUTH));
     }
 
     return this.loadCartByUserId(user.id).pipe(
@@ -61,7 +56,7 @@ export class CartService {
     const user = this.authService.getCurrentUser();
 
     if (!user) {
-      return throwError(() => new Error('NOT_AUTH'));
+      return throwError(() => new Error(Exception.NOT_AUTH));
     }
 
     return this.loadCartByUserId(user.id);
@@ -71,18 +66,18 @@ export class CartService {
     const user = this.authService.getCurrentUser();
 
     if (!user) {
-      return throwError(() => new Error('NOT_AUTH'));
+      return throwError(() => new Error(Exception.NOT_AUTH));
     }
 
     return this.loadCartByUserId(user.id).pipe(
       switchMap((cart) => {
         if (!cart) {
-          return throwError(() => new Error('CART_NOT_FOUND'));
+          return throwError(() => new Error(Exception.CART_NOT_FOUND));
         }
 
         const products = cart.products.filter((item) => item.id != cartItemId);
 
-        return this.patchCart(cart.id, products).pipe(map(() => void 0));
+        return this.cartDataService.updateCart(cart.id, products).pipe(map(() => void 0));
       }),
     );
   }
@@ -91,21 +86,21 @@ export class CartService {
     const user = this.authService.getCurrentUser();
 
     if (!user) {
-      return throwError(() => new Error('NOT_AUTH'));
+      return throwError(() => new Error(Exception.NOT_AUTH));
     }
 
     return this.loadCartByUserId(user.id).pipe(
       switchMap((cart) => {
         if (!cart) {
-          return throwError(() => new Error('CART_NOT_FOUND'));
+          return throwError(() => new Error(Exception.CART_NOT_FOUND));
         }
 
         const products = [...cart.products];
 
-        const itemIndex = products.findIndex((item) => item.id == cartItemId);
+        const itemIndex = products.findIndex((item) => item.id === cartItemId);
 
         if (itemIndex < 0) {
-          return throwError(() => new Error('PRODUCT_NOT_FOUND'));
+          return throwError(() => new Error(Exception.PRODUCT_NOT_FOUND));
         }
 
         const nextCount = products[itemIndex].count + delta;
@@ -113,7 +108,7 @@ export class CartService {
         if (nextCount <= 0) {
           products.splice(itemIndex, 1);
         } else if (nextCount > maxStock) {
-          return throwError(() => new Error('OUT_OF_STOCK'));
+          return throwError(() => new Error(Exception.OUT_OF_STOCK));
         } else {
           products[itemIndex] = {
             ...products[itemIndex],
@@ -121,7 +116,7 @@ export class CartService {
           };
         }
 
-        return this.patchCart(cart.id, products).pipe(map(() => undefined));
+        return this.cartDataService.updateCart(cart.id, products).pipe(map(() => undefined));
       }),
     );
   }
@@ -134,8 +129,9 @@ export class CartService {
     const user = this.authService.getCurrentUser();
 
     if (!user) {
-      return throwError(() => new Error('NOT_AUTH'));
+      return throwError(() => new Error(Exception.NOT_AUTH));
     }
+
     return this.loadCartByUserId(user.id).pipe(
       switchMap((cart) => {
         if (!cart) {
@@ -151,26 +147,21 @@ export class CartService {
     );
   }
 
+  private createCart(userId: string, product: Product): Observable<number> {
+    return this.cartDataService.createCart(userId, product).pipe(map(() => 1));
+  }
+
   private loadCartByUserId(userId: string): Observable<Cart | null> {
-    return this.http.get<Cart[]>(`${environment.apiUrl}/${this.API_URL}`).pipe(
+    return this.cartDataService.getCarts().pipe(
       map((carts) => {
         return carts.find((cart) => cart.userId === userId) ?? null;
       }),
     );
   }
 
-  private createCart(userId: string, product: Product): Observable<number> {
-    return this.http
-      .post<Cart>(`${environment.apiUrl}/${this.API_URL}`, {
-        userId: userId,
-        products: [this.toCartItem(product)],
-      })
-      .pipe(map(() => 1));
-  }
-
   private updateCartWithProduct(cart: Cart, product: Product, delta: number): Observable<number> {
     const products = [...cart.products];
-    const existingItemIndex = products.findIndex((item) => item.id == product.id);
+    const existingItemIndex = products.findIndex((item) => item.id === product.id);
     let nextCount = delta;
 
     if (existingItemIndex >= 0) {
@@ -178,11 +169,11 @@ export class CartService {
 
       if (nextCount <= 0) {
         products.splice(existingItemIndex, 1);
-        return this.patchCart(cart.id, products).pipe(map(() => 0));
+        return this.cartDataService.updateCart(cart.id, products).pipe(map(() => 0));
       }
 
       if (nextCount > product.stock) {
-        return throwError(() => new Error('OUT_OF_STOCK'));
+        return throwError(() => new Error(Exception.OUT_OF_STOCK));
       }
 
       products[existingItemIndex] = {
@@ -198,11 +189,7 @@ export class CartService {
       products.push(this.toCartItem(product));
     }
 
-    return this.patchCart(cart.id, products).pipe(map(() => nextCount));
-  }
-
-  private patchCart(cartId: string, products: CartItem[]): Observable<Cart> {
-    return this.http.patch<Cart>(`${environment.apiUrl}/${this.API_URL}/${cartId}`, { products });
+    return this.cartDataService.updateCart(cart.id, products).pipe(map(() => nextCount));
   }
 
   private toCartItem(product: Product): CartItem {

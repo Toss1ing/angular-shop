@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../enviroment/environment.dev';
 import { LoginCredentials, SingUpCredentials, User } from '../models/user';
 import { Observable, of, switchMap, tap, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 const AUTH_USER_KEY = 'auth_user';
 const EMAIL_ATTRIBUTE = 'email';
@@ -14,7 +15,10 @@ const PASSWORD_ATTRIBUTE = 'password';
 export class AuthService {
   private readonly API_URL = 'users';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   login(credentials: LoginCredentials): Observable<User> {
     const params = new HttpParams()
@@ -50,7 +54,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(AUTH_USER_KEY);
-    window.location.reload();
+    this.router.navigate(['/']);
   }
 
   getCurrentUser(): User | null {

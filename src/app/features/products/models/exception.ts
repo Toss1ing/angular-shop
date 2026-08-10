@@ -1,0 +1,7 @@
+
+export enum Exception {
+  NOT_AUTH = 'NOT_AUTH',
+  OUT_OF_STOCK = 'OUT_OF_STOCK',
+  CART_NOT_FOUND = 'CART_NOT_FOUND',
+  PRODUCT_NOT_FOUND = 'PRODUCT_NOT_FOUND',
+}

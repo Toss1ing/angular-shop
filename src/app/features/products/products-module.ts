@@ -11,6 +11,7 @@ import { ProductDetailsPage } from './pages/product-details-page/product-details
 import { ProductCartActions } from './components/product-cart-actions/product-cart-actions';
 import { ProductEditPage } from './pages/product-edit-page/product-edit-page';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
+import { StockStatusDirective } from './directives/stock-status.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,13 @@ import { ProductFilterPipe } from './pipes/product-filter.pipe';
     ProductEditPage,
     ProductFilterPipe,
   ],
-  imports: [CommonModule, ProductsRoutingModule, MaterialModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ProductsRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    StockStatusDirective,
+  ],
   exports: [PlpPage, ProductDetailsPage, ProductEditPage],
 })
 export class ProductsModule {}

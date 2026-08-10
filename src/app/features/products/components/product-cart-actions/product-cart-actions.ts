@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../../../cart/service/cart.service';
 import { Product } from '../../models/product';
 import { Router } from '@angular/router';
+import { Exception } from '../../models/exception';
 
 @Component({
   selector: 'app-product-cart-actions',
@@ -33,7 +34,7 @@ export class ProductCartActions implements OnInit {
   addToCart(event: Event): void {
     event.stopPropagation();
     this.updateCount(() =>
-      this.cartService.addProduct(this.product).subscribe({
+      this.cartService.incrementProduct(this.product).subscribe({
         next: (count) => {
           this.handleSuccess(count);
         },
@@ -52,7 +53,7 @@ export class ProductCartActions implements OnInit {
           this.handleSuccess(count);
         },
         error: (error) => {
-          if (error.message === 'NOT_AUTH') {
+          if (error.message === Exception.NOT_AUTH) {
             this.errorMessage = 'Login first please';
           } else if (error.message === 'OUT_OF_STOCK') {
             this.errorMessage = 'Out of stock';
@@ -72,7 +73,7 @@ export class ProductCartActions implements OnInit {
           this.handleSuccess(count);
         },
         error: (error) => {
-          if (error.message === 'NOT_AUTH') {
+          if (error.message === Exception.NOT_AUTH) {
             this.errorMessage = 'Login first please';
           } else {
             this.errorMessage = 'Could not update cart';
