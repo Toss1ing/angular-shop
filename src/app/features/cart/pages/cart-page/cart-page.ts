@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../../products/service/product.service';
 import { Cart, CartItem } from '../../models/cart';
 import { CartService } from '../../service/cart.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-cart-page',
@@ -17,6 +18,8 @@ export class CartPage implements OnInit {
   itemErrorMessage = '';
   productStockMap: Record<string, number> = {};
   productImageMap: Record<string, string> = {};
+  pageIndex: number = 0;
+  pageSize: number = 5;
 
   constructor(
     private cartService: CartService,
@@ -27,6 +30,17 @@ export class CartPage implements OnInit {
 
   ngOnInit(): void {
     this.loadProductsAndCart();
+  }
+
+  get paginatedCartProducts(): CartItem[] {
+    if(!this.cart) {
+      return [];
+    }
+
+    const startIndex = this.pageIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+
+    return this.cart?.products.slice(startIndex, endIndex);
   }
 
   get totalItems(): number {
@@ -43,6 +57,11 @@ export class CartPage implements OnInit {
     }
 
     return this.cartService.getTotalPrice(this.cart.products);
+  }
+
+  onPageChange(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
   }
 
   getStock(item: CartItem): number {

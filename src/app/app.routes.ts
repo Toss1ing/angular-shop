@@ -4,6 +4,7 @@ import { PlpPage } from './features/products/pages/plp-page/plp-page';
 import { ProductDetailsPage } from './features/products/pages/product-details-page/product-details-page';
 import { ProductEditPage } from './features/products/pages/product-edit-page/product-edit-page';
 import { SignupPage } from './features/auth/pages/signup-page/signup-page';
+import { guestGuard } from './features/auth/guards/guest.guard';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,7 @@ export const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./features/auth/auth-module').then((m) => m.AuthModule),
+    canActivate: [guestGuard],
   },
   {
     path: 'cart',

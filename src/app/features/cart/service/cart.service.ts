@@ -134,11 +134,11 @@ export class CartService {
 
     return this.loadCartByUserId(user.id).pipe(
       switchMap((cart) => {
+
         if (!cart) {
           if (delta < 0) {
             return of(0);
           }
-
           return this.createCart(user.id, product);
         }
 
@@ -148,7 +148,8 @@ export class CartService {
   }
 
   private createCart(userId: string, product: Product): Observable<number> {
-    return this.cartDataService.createCart(userId, product).pipe(map(() => 1));
+    const cartItem = this.toCartItem(product);
+    return this.cartDataService.createCart(userId, [cartItem]).pipe(map(() => 1));
   }
 
   private loadCartByUserId(userId: string): Observable<Cart | null> {
@@ -161,6 +162,7 @@ export class CartService {
 
   private updateCartWithProduct(cart: Cart, product: Product, delta: number): Observable<number> {
     const products = [...cart.products];
+
     const existingItemIndex = products.findIndex((item) => item.id === product.id);
     let nextCount = delta;
 
@@ -189,6 +191,7 @@ export class CartService {
       products.push(this.toCartItem(product));
     }
 
+    console.log('before patch')
     return this.cartDataService.updateCart(cart.id, products).pipe(map(() => nextCount));
   }
 

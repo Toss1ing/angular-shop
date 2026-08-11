@@ -42,7 +42,7 @@
       "price": 95,
       "description": "Alexander. J reinvents the notion of fragrances. Each fragrance explores a wide range of olfactory notes dosed for a unique design and composition. The raw materials are noble and valuable. As each of them reacts differently to heat. Alexander. J has more than 20 perfumes in the market. The earliest edition was launched in 2012.",
       "image": "https://spb.wadoo.ru/upload/iblock/a76/a767e88a45949f1c1e67eae9005cac90.png",
-      "stock": 0,
+      "stock": 100,
       "rating": {
         "rate": 2.9,
         "count": 14
@@ -66,7 +66,7 @@
       "price": 154,
       "description": "The Bengale Oeillet is actually a variety of China rose, Rosa Indica caryophyllea, bred by the floral painter and botanist ",
       "image": "https://cdn1.ozone.ru/s3/multimedia-h/6180297521.jpg",
-      "stock": 0,
+      "stock": 200,
       "rating": {
         "rate": 5,
         "count": 8
@@ -121,6 +121,7 @@
       }
     },
     {
+      "id": "AKgFd5c09DE",
       "title": "Frankie Garage Sporty Fragrance Blue Tag ",
       "price": 15,
       "description": "The Sporty Fragrance collection by Frankie Garage has expanded to include Blue Tag, a dynamic men's fragrance with a woody-fougere character. Launched in 2021, this eau de toilette accentuates the wearer's sporty style. Blue Tag opens with cool citrus notes of bitter orange and green bergamot, a duo reinforced by the vanilla nuances of elemi resin and the warm spark of black pepper. At the heart, the spicy tone of geranium is enhanced by the resinous quality of juniper, the textured note of cinnamon, and the softness of clove. The fragrance leaves a charismatic trail featuring notes of leather, spicy patchouli leaves, and a woody blend of cedar and vetiver.",
@@ -129,8 +130,7 @@
       "rating": {
         "rate": 2,
         "count": 100
-      },
-      "id": "AKgFd5c09DE"
+      }
     }
   ],
   "cart": [
@@ -156,15 +156,9 @@
           "price": 93.5
         },
         {
-          "id": "3",
-          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
-          "count": 5,
-          "price": 286
-        },
-        {
           "id": "2",
           "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
-          "count": 4,
+          "count": 8,
           "price": 1
         },
         {
@@ -172,6 +166,48 @@
           "title": "Ajmal Silver Shade Eau de Parfum, 100ml",
           "count": 5,
           "price": 20.9
+        },
+        {
+          "id": "4",
+          "title": "Antonio Visconti Silver Wood Eau de Parfum, 100ml",
+          "count": 7,
+          "price": 175
+        },
+        {
+          "id": "6",
+          "title": "Parfums de Marly Herod Eau de Parfum, 125ml",
+          "count": 3,
+          "price": 198
+        },
+        {
+          "id": "9",
+          "title": "Creed Bois Du Portugal Eau de Parfum, 100ml",
+          "count": 4,
+          "price": 214.5
+        },
+        {
+          "id": "Yeyw966mjmw",
+          "title": "Hello workdsafsd 75ml",
+          "count": 3,
+          "price": 100
+        },
+        {
+          "id": "10",
+          "title": "Ajmal Zeal Eau de Parfum, 100ml",
+          "count": 3,
+          "price": 33
+        },
+        {
+          "id": "5",
+          "title": "Alexandre.J The Collector Golden Oud Eau de Parfum, 100ml",
+          "count": 6,
+          "price": 95
+        },
+        {
+          "id": "7",
+          "title": "Aedes de Venustas Oeillet Bengale Eau de Parfum, 100ml",
+          "count": 6,
+          "price": 154
         }
       ],
       "id": "7z4nt1X01LI"
@@ -574,8 +610,63 @@
     },
     {
       "userId": "e6igz4_inAE",
-      "products": [],
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 5,
+          "price": 1
+        },
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 6,
+          "price": 93.5
+        }
+      ],
       "id": "VVj3EFqX4OY"
+    },
+    {
+      "userId": "aNe5KlGnrRU",
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 3,
+          "price": 93.5
+        },
+        {
+          "id": "4",
+          "title": "Antonio Visconti Silver Wood Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 175
+        },
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 6,
+          "price": 1
+        },
+        {
+          "id": "5",
+          "title": "Alexandre.J The Collector Golden Oud Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 95
+        },
+        {
+          "id": "8",
+          "title": "Ajmal Silver Shade Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 20.9
+        },
+        {
+          "id": "9",
+          "title": "Creed Bois Du Portugal Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 214.5
+        }
+      ],
+      "id": "IVG_IXV1m1g"
     }
   ],
   "users": [
@@ -593,6 +684,16 @@
       "email": "CreateAccount@mail.com",
       "password": "04060755qW123",
       "id": "e6igz4_inAE"
+    },
+    {
+      "email": "kirill.borisenko05@mail.ru",
+      "password": "04060755qW123",
+      "id": "CNgH1a6NxL0"
+    },
+    {
+      "email": "toss1ing@mail.ru",
+      "password": "1234567",
+      "id": "aNe5KlGnrRU"
     }
   ],
   "reviews": [

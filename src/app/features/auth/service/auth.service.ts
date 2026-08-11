@@ -1,46 +1,45 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../../enviroment/environment.dev';
 import { LoginCredentials, SingUpCredentials, User } from '../models/user';
 import { Observable, of, switchMap, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthDataService } from './auth-data.service';
+import { Exception } from '../../products/models/exception';
 
 const AUTH_USER_KEY = 'auth_user';
-const EMAIL_ATTRIBUTE = 'email';
-const PASSWORD_ATTRIBUTE = 'password';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL = 'users';
-
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private authDataService: AuthDataService,
+    private router: Router,
   ) {}
 
   login(credentials: LoginCredentials): Observable<User> {
-    const params = new HttpParams()
-      .set(EMAIL_ATTRIBUTE, credentials.email)
-      .set(PASSWORD_ATTRIBUTE, credentials.password);
-
-    return this.http.get<User[]>(`${environment.apiUrl}/${this.API_URL}`, { params }).pipe(
+    return this.authDataService.getUsers(credentials).pipe(
       switchMap((users) => {
         if (!users.length) {
-          return throwError(() => new Error('INVALID_CREDENTIALS'));
+          return throwError(() => new Error(Exception.INVALID_CREDENTIALS));
         }
 
-        const user = users[0];
-        localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+        const findUser = users.find(
+          (user) => user.password === credentials.password
+        );
 
-        return of(user);
+        if(!findUser) {
+          return throwError(() => new Error(Exception.INVALID_CREDENTIALS));
+        }
+
+        localStorage.setItem(AUTH_USER_KEY, JSON.stringify(findUser));
+
+        return of(findUser);
       }),
     );
   }
 
-  signUp(credentials: SingUpCredentials): Observable<User> {
-    return this.http.post<User>(`${environment.apiUrl}/${this.API_URL}`, credentials).pipe(
+  signUp(signUpCredentials: SingUpCredentials): Observable<User> {
+    return this.authDataService.createUser(signUpCredentials).pipe(
       tap((user) => {
         if (!user) {
           throw new Error('Cannot create account');

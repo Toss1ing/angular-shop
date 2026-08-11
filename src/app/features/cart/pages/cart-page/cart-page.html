@@ -22,7 +22,7 @@
       <div class="cart-page__items">
         <p class="cart-page__item-error" *ngIf="itemErrorMessage">{{ itemErrorMessage }}</p>
 
-        <article class="cart-page__item" *ngFor="let item of cart.products">
+        <article class="cart-page__item" *ngFor="let item of paginatedCartProducts">
           <button
             type="button"
             class="cart-page__item-image"
@@ -76,6 +76,14 @@
             <mat-icon>delete_outline</mat-icon>
           </button>
         </article>
+        <mat-paginator
+          class="cart-page__paginator"
+          [length]="cart.products.length"
+          [pageSize]="pageSize"
+          [pageIndex]="pageIndex"
+          [pageSizeOptions]="[5, 10]"
+          (page)="onPageChange($event)"
+        />
       </div>
 
       <aside class="cart-page__summary">
