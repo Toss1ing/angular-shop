@@ -1,0 +1,152 @@
+<section class="cart-page">
+  <div class="cart-page__container">
+    <div class="cart-page__header">
+      <h1 class="cart-page__title">Shopping cart</h1>
+      <p class="cart-page__subtitle" *ngIf="cart && cart.products.length">
+        {{ totalItems }} {{ totalItems === 1 ? 'item' : 'items' }}
+      </p>
+    </div>
+
+    <p class="cart-page__loading" *ngIf="isLoading">Loading cart...</p>
+
+    <div
+      class="cart-page__panel cart-page__panel--centered"
+      *ngIf="!isLoading && (!cart || !cart.products.length)"
+    >
+      <h2>Your cart is empty</h2>
+      <p>Add products from the catalog to see them here.</p>
+      <button mat-flat-button type="button" (click)="goToProducts()">Browse products</button>
+    </div>
+
+    <div class="cart-page__layout" *ngIf="!isLoading && cart && cart.products.length">
+      <div class="cart-page__items">
+        <p class="cart-page__item-error" *ngIf="itemErrorMessage">{{ itemErrorMessage }}</p>
+
+        <article class="cart-page__item" *ngFor="let item of paginatedCartProducts">
+          <button
+            type="button"
+            class="cart-page__item-image"
+            (click)="openProduct(item)"
+            [disabled]="!getProductImage(item)"
+          >
+            <img *ngIf="getProductImage(item)" [src]="getProductImage(item)" [alt]="item.title" />
+          </button>
+
+          <div class="cart-page__item-details">
+            <button type="button" class="cart-page__item-title" (click)="openProduct(item)">
+              {{ item.title }}
+            </button>
+            <p class="cart-page__item-price">{{ item.price | currency: 'EUR' }} each</p>
+          </div>
+
+          <div class="cart-page__quantity">
+            <button
+              mat-icon-button
+              type="button"
+              aria-label="Decrease quantity"
+              [disabled]="isUpdating"
+              (click)="decrementItem(item)"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+
+            <span class="cart-page__quantity-value">{{ item.count }}</span>
+
+            <button
+              mat-icon-button
+              type="button"
+              aria-label="Increase quantity"
+              [disabled]="isUpdating || !canIncrement(item)"
+              (click)="incrementItem(item)"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+          <p class="cart-page__item-total">{{ item.price * item.count | currency: 'EUR' }}</p>
+
+          <button
+            mat-icon-button
+            type="button"
+            class="cart-page__remove"
+            aria-label="Remove item"
+            [disabled]="isUpdating"
+            (click)="removeItem(item.id)"
+          >
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </article>
+        <div class="cart-page__pagination" *ngIf="totalPages > 1">
+
+          <span>Page {{ pageIndex + 1 }} of {{ totalPages }}</span>
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="pageIndex === 0"
+            (click)="goToFirstPage()"
+            aria-label="First page"
+          >
+            <mat-icon>first_page</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="pageIndex === 0"
+            (click)="previousPage()"
+          >
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+
+          <button
+            *ngFor="let pageNumber of pageNumbers"
+            mat-button
+            type="button"
+            class="cart-page__pagination-number"
+            [class.cart-page__pagination-number--active]="pageNumber === pageIndex"
+            (click)="goToPageByNumber(pageNumber)"
+            >
+            {{ pageNumber + 1 }}
+          </button>
+
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="pageIndex === totalPages - 1"
+            (click)="nextPage()"
+          >
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="pageIndex === totalPages - 1"
+            (click)="goToLastPage()"
+            aria-label="Last page"
+          >
+            <mat-icon>last_page</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <aside class="cart-page__summary">
+        <h2>Order summary</h2>
+
+        <div class="cart-page__summary-line">
+          <span>Items</span>
+          <span>{{ totalItems }}</span>
+        </div>
+
+        <div class="cart-page__summary-line cart-page__summary-line--total">
+          <span>Total</span>
+          <strong>{{ totalPrice | currency: 'EUR' }}</strong>
+        </div>
+
+        <button mat-stroked-button type="button" class="cart-page__continue" (click)="goToProducts()">
+          Continue shopping
+        </button>
+      </aside>
+    </div>
+  </div>
+</section>

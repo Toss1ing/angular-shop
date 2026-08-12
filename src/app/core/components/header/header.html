@@ -1,0 +1,59 @@
+<header class="header">
+  <div class="header__container">
+    <a class="header__logo" routerLink="/">
+      ShopStore
+    </a>
+
+    <nav class="header__nav">
+      <a
+        *ngFor="let item of navItems"
+        class="header__nav-link"
+        [routerLink]="item.url"
+        routerLinkActive="header__nav-link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="onNavItemClick(item)"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <form class="header__search">
+      <mat-form-field
+        class="header__search-field"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <input type="search" matInput placeholder="Search products..." />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
+
+    <div class="header__icons">
+      <div class="header__account" *ngIf="currentUser; else signInBlock">
+        <div class="header__user">
+          <span class="header__user-avatar">{{ userDisplayEmail.charAt(0) }}</span>
+          <span class="header__user-email">{{ userDisplayEmail }}</span>
+        </div>
+
+        <button mat-stroked-button type="button" class="header__logout" (click)="logout()">
+          Logout
+        </button>
+      </div>
+
+      <ng-template #signInBlock>
+        <button mat-stroked-button type="button" class="header__sign-in" routerLink="/login">
+          Sign in
+        </button>
+      </ng-template>
+
+      <button
+        mat-icon-button
+        type="button"
+        aria-label="Cart"
+        routerLink="/cart"
+      >
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+  </div>
+</header>

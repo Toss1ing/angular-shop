@@ -1,59 +1,133 @@
-# AngularShop
+# Project Setup
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.18.
+## Prerequisites
 
-## Development server
+Make sure you have the following installed:
 
-To start a local development server, run:
+* **Node.js**
+* **npm**
+* **Angular CLI**
+
+You can check the installed versions with:
+
+```bash
+node --version
+npm --version
+ng version
+```
+
+If Angular CLI is not installed, install it globally:
+
+```bash
+npm install -g @angular/cli
+```
+
+## Installation
+
+### 1. Install dependencies
+
+From the project root directory, run:
+
+```bash
+npm install
+```
+
+## Running the Application
+
+The project consists of two parts:
+
+1. Angular frontend
+2. JSON Server mock backend
+
+### 1. Start the Angular application
+
+Run:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The Angular application will be available at:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Keep this terminal running.
+
+---
+
+### 2. Start JSON Server
+
+Open a new terminal and navigate to the `data` directory:
 
 ```bash
-ng generate --help
+cd data
 ```
 
-## Building
-
-To build the project run:
+Then start JSON Server:
 
 ```bash
-ng build
+json-server db.json
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+JSON Server will run on:
 
-## Running unit tests
+```text
+http://localhost:3000
+```
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Running the Project
+
+After completing the setup, you should have two running processes:
+
+```text
+Angular application
+http://localhost:4200
+
+JSON Server
+http://localhost:3000
+```
+
+## Troubleshooting
+
+### JSON Server command not found
+
+If you see:
+
+```text
+json-server: command not found
+```
+
+install JSON Server:
 
 ```bash
-ng test
+npm install -g json-server
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Then run:
 
 ```bash
-ng e2e
+cd data
+json-server db.json
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Angular CLI command not found
 
-## Additional Resources
+If you see:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```text
+ng: command not found
+```
+
+install Angular CLI:
+
+```bash
+npm install -g @angular/cli
+```
+
+Then run:
+
+```bash
+ng serve
+```

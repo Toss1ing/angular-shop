@@ -1,0 +1,747 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+      "price": 93.5,
+      "description": "The scents of Van Cleef & Arpels are magical Collection Extraordinaire, unique and breathe an unmistakable personality. From all the use of precious old and present the mix fascinating, spicy, woody and floral notes. Adventure and joy of life, a steady state in life and a taste for a touch of luxury are side effects associated with the scents of the Van Cleef & Arpels Collection Extraordinaire and distinguish with a lot of individuality precise mix of minimalism and luxury expresses that the simplicity of things is true luxury often and there is no need to feel wealth happiness and love, joy, personality and sensuality and passion. Van Cleef & Arpels was found in 1896 and has over more than 55 fragrances.",
+      "image": "https://de-parfum.ru/upload/ammina.optimizer/jpg-webp/q100/upload/iblock/a30/a30r2k1zvs1heafukjanfki9m81c5tbg.webp",
+      "stock": 100,
+      "rating": {
+        "rate": 3,
+        "count": 0
+      }
+    },
+    {
+      "id": "2",
+      "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+      "price": 1,
+      "description": "The name and identity of the brand are inspired by the Moorish civilization and architecture. Moresque perfume offers a collection of unique and modern perfumes that are reminiscent of the scent of the Orient in combination with Italian delicacy. The perfumes are all true sensations, which give you a feeling of luxury. Moresque perfumes are Haute Parfumerie Products. These perfumes reveal luxury, style and distinction.",
+      "image": "https://www.laromat.ru/pics/karl-lagerfeld_bois-d-ambre_man.jpg",
+      "stock": 100,
+      "rating": {
+        "rate": 1.3,
+        "count": 300
+      }
+    },
+    {
+      "id": "4",
+      "title": "Antonio Visconti Silver Wood Eau de Parfum, 100ml",
+      "price": 175,
+      "description": "Visconti perfumes has an unmistakable, specific and enduring olfactory signature, thanks to the concentration of the essences used. These are created with the knowledge and skill of ancient apothecaries, using special blending techniques that can often take several months. This lenght of time is essential if the perfume oils are to find the ideal condition to merge and form a final, perfect harmony that is sublime and sumptuous, able to make the most important moments of life even more special.",
+      "stock": 45,
+      "image": "https://www.aroma-butik.ru/images/product_images/original_images/150107_0.jpg",
+      "rating": {
+        "rate": 4.2,
+        "count": 32
+      }
+    },
+    {
+      "id": "5",
+      "title": "Alexandre.J The Collector Golden Oud Eau de Parfum, 100ml",
+      "price": 95,
+      "description": "Alexander. J reinvents the notion of fragrances. Each fragrance explores a wide range of olfactory notes dosed for a unique design and composition. The raw materials are noble and valuable. As each of them reacts differently to heat. Alexander. J has more than 20 perfumes in the market. The earliest edition was launched in 2012.",
+      "image": "https://spb.wadoo.ru/upload/iblock/a76/a767e88a45949f1c1e67eae9005cac90.png",
+      "stock": 100,
+      "rating": {
+        "rate": 2.9,
+        "count": 14
+      }
+    },
+    {
+      "id": "6",
+      "title": "Parfums de Marly Herod Eau de Parfum, 125ml",
+      "price": 198,
+      "description": "Unforgettable thanks to its addictive presence and unique appeal, this exhilarating fragrance fits within the great lineage of Parfums de Marly. Its bottles features the brand’s equestrian cabinets, embossed on solid and opaque glass. Parfums de Marly has 30 perfumes in the fragrance market. The earliest edition was created in 2009.",
+      "image": "https://www.laromat.ru/pics/86858MARLY_Herod.jpg",
+      "stock": 9,
+      "rating": {
+        "rate": 4,
+        "count": 0
+      }
+    },
+    {
+      "id": "7",
+      "title": "Aedes de Venustas Oeillet Bengale Eau de Parfum, 100ml",
+      "price": 154,
+      "description": "The Bengale Oeillet is actually a variety of China rose, Rosa Indica caryophyllea, bred by the floral painter and botanist ",
+      "image": "https://cdn1.ozone.ru/s3/multimedia-h/6180297521.jpg",
+      "stock": 200,
+      "rating": {
+        "rate": 5,
+        "count": 8
+      }
+    },
+    {
+      "id": "8",
+      "title": "Ajmal Silver Shade Eau de Parfum, 100ml",
+      "price": 20.9,
+      "description": "Ajmal Perfumes has nearly 6 decades of expertise in crafting some of the most enchanting and enticing oriental perfumes. At Ajmal perfected the science, art and craft of oriental perfumery. These selections appeal to modern connoisseurs who are also deeply rooted in traditional values. These concentrated perfume oils and eau de parfums offer discerning consumers a truly memorable experience.",
+      "stock": 20,
+      "image": "https://cdn1.ozone.ru/s3/multimedia-o/6400589484.jpg",
+      "rating": {
+        "rate": 2.6,
+        "count": 11
+      }
+    },
+    {
+      "id": "9",
+      "title": "Creed Bois Du Portugal Eau de Parfum, 100ml",
+      "price": 214.5,
+      "description": "Creed has created extraordinary perfumes for more than 250 years. The brand Creed is interesting not only because of its long and famous history, but also because of the old processing techniques of precious materials that are selected for the production of the unique perfumes. Creed prefers natural ingredients of top quality over synthetic alternatives. Creed includes scents for men, women and unisex perfumes. They are packaged in elegant bottles that are a modern version of the beautiful historic models.",
+      "stock": 5,
+      "image": "https://i.pinimg.com/736x/75/36/cf/7536cfefa7b31978b439f724603cdbb1.jpg",
+      "rating": {
+        "rate": 4.9,
+        "count": 14
+      }
+    },
+    {
+      "id": "10",
+      "title": "Ajmal Zeal Eau de Parfum, 100ml",
+      "price": 33,
+      "description": "Ajmal Perfumes has nearly 6 decades of expertise in crafting some of the most enchanting and enticing oriental perfumes. At Ajmal perfected the science, art and craft of oriental perfumery. These selections appeal to modern connoisseurs who are also deeply rooted in traditional values. These concentrated perfume oils and eau de parfums offer discerning consumers a truly memorable experience.",
+      "stock": 10,
+      "image": "https://cdn2.randewoo.ru/img/105060/z/1",
+      "rating": {
+        "rate": 5,
+        "count": 1
+      }
+    },
+    {
+      "id": "Yeyw966mjmw",
+      "title": "Hello workdsafsd 75ml",
+      "price": 100,
+      "description": "asdfsds sdafklsdafk jsdakf jkl jsdkl lj ksdkfsdja;fk",
+      "image": "sadfsdafsdsdafsdafd",
+      "stock": 5,
+      "rating": {
+        "rate": 5,
+        "count": 10
+      }
+    },
+    {
+      "id": "AKgFd5c09DE",
+      "title": "Frankie Garage Sporty Fragrance Blue Tag ",
+      "price": 15,
+      "description": "The Sporty Fragrance collection by Frankie Garage has expanded to include Blue Tag, a dynamic men's fragrance with a woody-fougere character. Launched in 2021, this eau de toilette accentuates the wearer's sporty style. Blue Tag opens with cool citrus notes of bitter orange and green bergamot, a duo reinforced by the vanilla nuances of elemi resin and the warm spark of black pepper. At the heart, the spicy tone of geranium is enhanced by the resinous quality of juniper, the textured note of cinnamon, and the softness of clove. The fragrance leaves a charismatic trail featuring notes of leather, spicy patchouli leaves, and a woody blend of cedar and vetiver.",
+      "image": "https://www.laromat.ru/pics/frankie-garage_sporty-fragrance-blue-tag_man.jpg",
+      "stock": 0,
+      "rating": {
+        "rate": 2,
+        "count": 100
+      }
+    }
+  ],
+  "cart": [
+    {
+      "id": "1",
+      "userId": 1,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 2,
+          "price": 93.5
+        }
+      ]
+    },
+    {
+      "userId": "2",
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 10,
+          "price": 93.5
+        },
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 8,
+          "price": 1
+        },
+        {
+          "id": "8",
+          "title": "Ajmal Silver Shade Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 20.9
+        },
+        {
+          "id": "4",
+          "title": "Antonio Visconti Silver Wood Eau de Parfum, 100ml",
+          "count": 7,
+          "price": 175
+        },
+        {
+          "id": "6",
+          "title": "Parfums de Marly Herod Eau de Parfum, 125ml",
+          "count": 3,
+          "price": 198
+        },
+        {
+          "id": "9",
+          "title": "Creed Bois Du Portugal Eau de Parfum, 100ml",
+          "count": 4,
+          "price": 214.5
+        },
+        {
+          "id": "Yeyw966mjmw",
+          "title": "Hello workdsafsd 75ml",
+          "count": 3,
+          "price": 100
+        },
+        {
+          "id": "10",
+          "title": "Ajmal Zeal Eau de Parfum, 100ml",
+          "count": 3,
+          "price": 33
+        },
+        {
+          "id": "5",
+          "title": "Alexandre.J The Collector Golden Oud Eau de Parfum, 100ml",
+          "count": 6,
+          "price": 95
+        },
+        {
+          "id": "7",
+          "title": "Aedes de Venustas Oeillet Bengale Eau de Parfum, 100ml",
+          "count": 6,
+          "price": 154
+        }
+      ],
+      "id": "7z4nt1X01LI"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "T45YKHKoMBg"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "sCbTmYpYVTU"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "HC2YZze7Wqk"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "NZyDU_2DiAE"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "R62Kujr0DtU"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "31T7nQzDhFE"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "MUKDydM7GvM"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "s5tZxR0L_G0"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "7MYRuc97zac"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "MoTeSArotag"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "08Bn1Qjc1m8"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "wdHTRRexRP0"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "8WGTO1To1Cs"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "GAjl6YhhLts"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "B-co9sr8WSg"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "n2-t1SwIDjs"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "6ISIFbltSKY"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "JEwhMYiUpT4"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "mAgOclc9JRs"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "ng-dxsCu5mU"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "3",
+          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
+          "count": 1,
+          "price": 286
+        }
+      ],
+      "id": "PvJNt-cvdf0"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "3",
+          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
+          "count": 1,
+          "price": 286
+        }
+      ],
+      "id": "qZxBfoNWY-c"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "3",
+          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
+          "count": 1,
+          "price": 286
+        }
+      ],
+      "id": "9DgrGFMu2VY"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "3",
+          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
+          "count": 1,
+          "price": 286
+        }
+      ],
+      "id": "IiXxfF67Qks"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "3",
+          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
+          "count": 1,
+          "price": 286
+        }
+      ],
+      "id": "vHOJkACfPUo"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "3",
+          "title": "Vince Camuto Eterno Eau de Toilette, 100ml",
+          "count": 1,
+          "price": 286
+        }
+      ],
+      "id": "giwNpqUhZwE"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "7vyyq_F5c-8"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "isEvgXLor7s"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "eiXQOC2SQyU"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "GSNdnslrEzA"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "oubksHaVqRQ"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 1,
+          "price": 1
+        }
+      ],
+      "id": "s5kB9HyjUu8"
+    },
+    {
+      "userId": null,
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 1,
+          "price": 93.5
+        }
+      ],
+      "id": "UQ2lB0z_eDo"
+    },
+    {
+      "userId": "e6igz4_inAE",
+      "products": [
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 5,
+          "price": 1
+        },
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 6,
+          "price": 93.5
+        }
+      ],
+      "id": "VVj3EFqX4OY"
+    },
+    {
+      "userId": "aNe5KlGnrRU",
+      "products": [
+        {
+          "id": "1",
+          "title": "Van Cleef & Arpels Extraordinaire Precious Oud Eau de Parfum, 75ml",
+          "count": 6,
+          "price": 93.5
+        },
+        {
+          "id": "4",
+          "title": "Antonio Visconti Silver Wood Eau de Parfum, 100ml",
+          "count": 7,
+          "price": 175
+        },
+        {
+          "id": "2",
+          "title": "Moresque Gold Collection Sole Eau de Parfum, 50ml",
+          "count": 10,
+          "price": 1
+        },
+        {
+          "id": "5",
+          "title": "Alexandre.J The Collector Golden Oud Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 95
+        },
+        {
+          "id": "8",
+          "title": "Ajmal Silver Shade Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 20.9
+        },
+        {
+          "id": "9",
+          "title": "Creed Bois Du Portugal Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 214.5
+        },
+        {
+          "id": "7",
+          "title": "Aedes de Venustas Oeillet Bengale Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 154
+        },
+        {
+          "id": "6",
+          "title": "Parfums de Marly Herod Eau de Parfum, 125ml",
+          "count": 5,
+          "price": 198
+        },
+        {
+          "id": "10",
+          "title": "Ajmal Zeal Eau de Parfum, 100ml",
+          "count": 5,
+          "price": 33
+        },
+        {
+          "id": "Yeyw966mjmw",
+          "title": "Hello workdsafsd 75ml",
+          "count": 5,
+          "price": 100
+        }
+      ],
+      "id": "IVG_IXV1m1g"
+    }
+  ],
+  "users": [
+    {
+      "email": "test@gmail.com",
+      "password": "Test_23",
+      "id": "1"
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "Test_12",
+      "id": "2"
+    },
+    {
+      "email": "CreateAccount@mail.com",
+      "password": "04060755qW123",
+      "id": "e6igz4_inAE"
+    },
+    {
+      "email": "kirill.borisenko05@mail.ru",
+      "password": "04060755qW123",
+      "id": "CNgH1a6NxL0"
+    },
+    {
+      "email": "toss1ing@mail.ru",
+      "password": "1234567",
+      "id": "aNe5KlGnrRU"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "productId": 3,
+      "name": "John S.",
+      "rate": 4,
+      "text": "Good product!"
+    },
+    {
+      "id": "2",
+      "productId": 3,
+      "name": "Ella A.",
+      "rate": 5,
+      "text": "Great product!"
+    },
+    {
+      "id": "3",
+      "productId": 1,
+      "name": "Jacob W.",
+      "rate": 2,
+      "text": "Doesn't fit :("
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
