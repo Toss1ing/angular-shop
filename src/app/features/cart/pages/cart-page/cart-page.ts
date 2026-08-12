@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../../products/service/product.service';
 import { Cart, CartItem } from '../../models/cart';
 import { CartService } from '../../service/cart.service';
-import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-cart-page',
@@ -19,7 +18,7 @@ export class CartPage implements OnInit {
   productStockMap: Record<string, number> = {};
   productImageMap: Record<string, string> = {};
   pageIndex: number = 0;
-  pageSize: number = 5;
+  pageSize: number = 3;
 
   constructor(
     private cartService: CartService,
@@ -33,7 +32,7 @@ export class CartPage implements OnInit {
   }
 
   get paginatedCartProducts(): CartItem[] {
-    if(!this.cart) {
+    if (!this.cart) {
       return [];
     }
 
@@ -59,9 +58,40 @@ export class CartPage implements OnInit {
     return this.cartService.getTotalPrice(this.cart.products);
   }
 
-  onPageChange(event: PageEvent): void {
-    this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize;
+  get totalPages(): number {
+    if (!this.cart?.products.length) {
+      return 0;
+    }
+
+    return Math.ceil(this.cart.products.length / this.pageSize);
+  }
+
+  get pageNumbers(): number[] {
+    return Array.from({ length: this.totalPages }, (_, index) => index);
+  }
+
+  goToPageByNumber(pageNumber: number) {
+    this.pageIndex = pageNumber;
+  }
+
+  nextPage(): void {
+    if (this.pageIndex < this.totalPages - 1) {
+      this.pageIndex++;
+    }
+  }
+
+  goToFirstPage(): void {
+    this.pageIndex = 0;
+  }
+
+  goToLastPage(): void {
+    this.pageIndex = this.totalPages - 1;
+  }
+
+  previousPage(): void {
+    if (this.pageIndex > 0) {
+      this.pageIndex--;
+    }
   }
 
   getStock(item: CartItem): number {

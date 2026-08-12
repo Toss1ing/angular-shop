@@ -215,12 +215,26 @@
   height: 44px;
 }
 
-.cart-page__paginator {
-  margin-top: 4px;
-  padding: 4px 12px;
-  background: #ffffff;
-  border: 1px solid #eef0f4;
-  border-radius: 14px;
+.cart-page__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.cart-page__pagination-number {
+  min-width: 40px;
+  height: 40px;
+}
+
+.cart-page__pagination-number--active {
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.cart-page__pagination button:disabled {
+  color: #bdbdbd;
 }
 
 @media (max-width: 960px) {

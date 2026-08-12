@@ -76,14 +76,58 @@
             <mat-icon>delete_outline</mat-icon>
           </button>
         </article>
-        <mat-paginator
-          class="cart-page__paginator"
-          [length]="cart.products.length"
-          [pageSize]="pageSize"
-          [pageIndex]="pageIndex"
-          [pageSizeOptions]="[5, 10]"
-          (page)="onPageChange($event)"
-        />
+        <div class="cart-page__pagination" *ngIf="totalPages > 1">
+
+          <span>Page {{ pageIndex + 1 }} of {{ totalPages }}</span>
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="pageIndex === 0"
+            (click)="goToFirstPage()"
+            aria-label="First page"
+          >
+            <mat-icon>first_page</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="pageIndex === 0"
+            (click)="previousPage()"
+          >
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+
+          <button
+            *ngFor="let pageNumber of pageNumbers"
+            mat-button
+            type="button"
+            class="cart-page__pagination-number"
+            [class.cart-page__pagination-number--active]="pageNumber === pageIndex"
+            (click)="goToPageByNumber(pageNumber)"
+            >
+            {{ pageNumber + 1 }}
+          </button>
+
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="pageIndex === totalPages - 1"
+            (click)="nextPage()"
+          >
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="pageIndex === totalPages - 1"
+            (click)="goToLastPage()"
+            aria-label="Last page"
+          >
+            <mat-icon>last_page</mat-icon>
+          </button>
+        </div>
       </div>
 
       <aside class="cart-page__summary">
